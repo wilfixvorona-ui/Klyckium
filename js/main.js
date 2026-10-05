@@ -20,7 +20,7 @@ const I18N = {
   uk: {
     numberLocale: 'uk-UA',
     play: 'Відтворити відео',
-    cursorPlay: 'Грати',
+    cursorPlay: 'Дивитись',
     cursorPause: 'Пауза',
     cursorDrag: 'Тягни',
     pause: 'Поставити на паузу',

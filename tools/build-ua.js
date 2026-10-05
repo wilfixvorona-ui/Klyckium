@@ -1,11 +1,20 @@
-// Builds the Ukrainian page (ua/index.html) from the English index.html.
+// Builds the Ukrainian page (ua/index.html) from the English index.html
+// and refreshes the structured data (JSON-LD) of both pages.
 // Usage: node tools/build-ua.js   — run it again after every change to index.html.
 // Every [en, uk] pair must be found in the source, otherwise the build stops and says which one is missing.
 const fs = require('fs');
 const path = require('path');
+const { injectLd } = require('./seo');
 
 const root = path.join(__dirname, '..');
-let html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const enPath = path.join(root, 'index.html');
+
+// English page: refresh its JSON-LD from the current FAQ texts
+const enSource = fs.readFileSync(enPath, 'utf8');
+const enHtml = injectLd(enSource, 'en');
+if (enHtml !== enSource) fs.writeFileSync(enPath, enHtml);
+
+let html = enHtml;
 
 const missing = [];
 const replaceAll = (from, to) => {
@@ -21,8 +30,13 @@ const setup = [
   ['src="video/', 'src="../video/'],
   ['src="js/', 'src="../js/'],
   ['href="css/', 'href="../css/'],
-  ['<link rel="alternate" hreflang="en" href="./">', '<link rel="alternate" hreflang="en" href="../">'],
-  ['<link rel="alternate" hreflang="uk" href="ua/">', '<link rel="alternate" hreflang="uk" href="./">'],
+  ['href="img/', 'href="../img/'],
+  ['<link rel="icon" href="favicon.ico"', '<link rel="icon" href="../favicon.ico"'],
+  ['<link rel="manifest" href="site.webmanifest">', '<link rel="manifest" href="../site.webmanifest">'],
+  ['<link rel="canonical" href="https://klykium.com/">', '<link rel="canonical" href="https://klykium.com/ua/">'],
+  ['<meta property="og:url" content="https://klykium.com/">', '<meta property="og:url" content="https://klykium.com/ua/">'],
+  ['<meta property="og:locale" content="en_US">\n  <meta property="og:locale:alternate" content="uk_UA">',
+    '<meta property="og:locale" content="uk_UA">\n  <meta property="og:locale:alternate" content="en_US">'],
   ['<a class="lang__btn is-active" href="./" hreflang="en" aria-current="page" aria-label="English">',
     '<a class="lang__btn" href="../" hreflang="en" lang="en" aria-label="English">'],
   ['<a class="lang__btn" href="ua/" hreflang="uk" lang="uk" aria-label="Українська">',
@@ -39,9 +53,13 @@ const setup = [
 // ---- texts. Longer / more specific strings go first ----
 const texts = [
   // head
-  ['<title>Klykium — Dental Clinic</title>', '<title>Klykium — стоматологічна клініка</title>'],
-  ['content="Klykium dental clinics in Lviv: checkups, orthodontics, implants and more. Smiles you don\'t cover with your hand."',
-    'content="Стоматологічні клініки Klykium у Львові: огляди, ортодонтія, імплантація та інше. Усмішки, які не хочеться прикривати рукою."'],
+  // title and description appear in <title>, description, og: and twitter: tags — all replaced at once
+  ['Klykium Dental Clinic in Lviv — Implants, Braces &amp; Checkups',
+    'Стоматологія Klykium у Львові — імплантація, брекети, огляди'],
+  ['Klykium dental clinics in Lviv: checkups from $40, braces and aligners, implants, root canal and gum treatment. Three locations and same-day emergency care.',
+    'Стоматологічні клініки Klykium у Львові: огляд від 1 600 ₴, брекети й елайнери, імплантація, лікування каналів і ясен. Три клініки та невідкладна допомога в день звернення.'],
+  ['content="Klykium — other clinics smile, we show teeth"', 'content="Klykium — інші клініки всміхаються, ми показуємо зуби"'],
+  ['Klykium — dental clinic in Lviv. ', 'Klykium — стоматологічна клініка у Львові. '],
 
   // header
   ['aria-label="Klykium home"', 'aria-label="Klykium — на головну"'],
@@ -73,7 +91,7 @@ const texts = [
 
   // services
   ['The figures show how much we have accomplished. Here is exactly what we do',
-    'Цифри показують, скільки ми досягли. А ось що саме ми робимо'],
+    'Цифри показують, чого ми досягли. А ось що саме ми робимо'],
   ['alt="Dental checkup tools and a toothbrush"', 'alt="Інструменти для огляду та зубна щітка"'],
   ['alt="Dental model with braces and a clear aligner"', 'alt="Модель щелепи з брекетами та прозорий елайнер"'],
   ['alt="Dental implant model and a smile"', 'alt="Модель зубного імпланта та усмішка"'],
@@ -81,7 +99,7 @@ const texts = [
   ['alt="Tooth root canal model"', 'alt="Модель кореневих каналів зуба"'],
   ['alt="Gum treatment model"', 'alt="Модель для лікування ясен"'],
   ['>General Dentistry<', '>Терапевтична стоматологія<'],
-  ['>Restorative Dentistry<', '>Відновлювальна стоматологія<'],
+  ['>Restorative Dentistry<', '>Реставрація зубів<'],
   ['>Pediatric Dentistry<', '>Дитяча стоматологія<'],
   ['>Dental Implants<', '>Імплантація<'],
   ['>Orthodontics<', '>Ортодонтія<'],
@@ -94,12 +112,12 @@ const texts = [
   ['Missing one tooth or several', 'Немає одного зуба або кількох'],
   ['Chipped, cracked or decayed teeth', 'Сколоті, тріснуті чи зруйновані карієсом зуби'],
   ['Tooth pain, deep decay or root canal treatment', 'Зубний біль, глибокий карієс чи лікування каналів'],
-  ['Bleeding, swollen or receding gums', 'Ясна кровоточать, набрякають чи опускаються'],
-  ['>From $1,200<', '>Від $1 200<'],
-  ['>From $40<', '>Від $40<'],
-  ['>From $90<', '>Від $90<'],
-  ['>From $180<', '>Від $180<'],
-  ['>From $70<', '>Від $70<'],
+  ['Bleeding, swollen or receding gums', 'Ясна кровоточать, набрякають чи оголюють корені зубів'],
+  ['>From $1,200<', '>Від 49 000 ₴<'],
+  ['>From $40<', '>Від 1 600 ₴<'],
+  ['>From $90<', '>Від 3 700 ₴<'],
+  ['>From $180<', '>Від 7 400 ₴<'],
+  ['>From $70<', '>Від 2 900 ₴<'],
   ['>40-45 mins<', '>40–45 хв<'],
   ['>6–18 months<', '>6–18 місяців<'],
   ['>1 visit<', '>1 візит<'],
@@ -119,7 +137,7 @@ const texts = [
   ['Dr. Maksym Tkachenko', 'Максим Ткаченко'],
   ['Dr. Taras Bondar', 'Тарас Бондар'],
   ['>Founder<', '>Засновниця<'],
-  ['>Head of Endodontics<', '>Керівник ендодонтії<'],
+  ['>Head of Endodontics<', '>Головний ендодонтист<'],
   ['>Clinical Director<', '>Клінічна директорка<'],
   ['<li>Orthodontist</li>', '<li>Ортодонтка</li>'],
   ['<li>Braces &amp; aligners</li>', '<li>Брекети й елайнери</li>'],
@@ -157,7 +175,7 @@ const texts = [
   ['>Patient reviews<', '>Відгуки пацієнтів<'],
   ['What our patients say after they leave', 'Що кажуть пацієнти після візиту'],
   ["From first checkups to full smile makeovers, here's how treatment at Klykium actually felt.",
-    'Від першого огляду до повного перетворення усмішки — ось як пацієнти відчули лікування в Klykium.'],
+    'Від першого огляду до повного перетворення усмішки — ось яким пацієнти запам’ятали лікування в Klykium.'],
   ['>Sort reviews<', '>Сортувати відгуки<'],
   ['>Newest reviews<', '>Найновіші відгуки<'],
   ['>Oldest reviews<', '>Найстаріші відгуки<'],
@@ -169,7 +187,7 @@ const texts = [
   ['aria-label="Next page"', 'aria-label="Наступна сторінка"'],
 
   // faq
-  ['Answers to the questions patients ask us most', 'Відповіді на питання, які пацієнти ставлять найчастіше'],
+  ['Answers to the questions patients ask us most', 'Відповіді на запитання, які нам ставлять найчастіше'],
   ["From pain and prices to what happens on your first visit, here's what people usually want to know before booking. Didn't find your question? Send it to us and a doctor will reply within a day.",
     'Від болю й цін до того, що відбувається на першому візиті, — ось що зазвичай хочуть знати перед записом. Не знайшли свого питання? Надішліть його нам, і лікар відповість протягом дня.'],
   ['Will the treatment hurt?', 'Чи буде боляче?'],
@@ -177,7 +195,7 @@ const texts = [
     'Майже ніколи. Перед будь-якою процедурою ми якісно знеболюємо й постійно питаємо, як ви почуваєтесь. Більшість пацієнтів кажуть, що відчули лише укол анестезії.'],
   ['How much does a visit cost?', 'Скільки коштує візит?'],
   ['A checkup with cleaning starts from $40. For anything more, you get a written treatment plan with the full price before we begin, so there are no surprises on the bill.',
-    'Огляд із чисткою — від $40. Для складніших випадків ви отримуєте письмовий план лікування з повною ціною ще до початку, тож жодних сюрпризів у рахунку.'],
+    'Огляд із чисткою — від 1 600 ₴. Для складніших випадків ви отримуєте письмовий план лікування з повною ціною ще до початку, тож жодних сюрпризів у рахунку.'],
   ['What happens on my first visit?', 'Що буде на першому візиті?'],
   ['We take a look, make X-rays if needed and talk through what we see. You leave with a clear plan and decide what to do next — nothing starts without your OK.',
     'Ми оглянемо зуби, за потреби зробимо знімок і пояснимо, що бачимо. Ви підете з чітким планом і самі вирішите, що робити далі, — без вашої згоди нічого не починаємо.'],
@@ -195,7 +213,7 @@ const texts = [
     'На пломби, коронки й імпланти діє гарантія від 1 до 5 років залежно від лікування. Точні умови прописані у вашому плані.'],
   ['Can I pay in installments?', 'Чи можна оплатити частинами?'],
   ["Yes. Treatments over $500 can be split into monthly payments with no extra fees. Ask the reception team and they'll set it up in a few minutes.",
-    'Так. Лікування понад $500 можна розбити на щомісячні платежі без переплат. Скажіть адміністратору — це займе кілька хвилин.'],
+    'Так. Лікування понад 20 000 ₴ можна розбити на щомісячні платежі без переплат. Скажіть адміністратору — це займе кілька хвилин.'],
   ['How often should I come for a checkup?', 'Як часто треба приходити на огляд?'],
   ['Every six months works for most people. If you have braces, implants or gum issues, your doctor may suggest coming a bit more often.',
     'Більшості людей достатньо раз на пів року. Якщо у вас брекети, імпланти чи проблеми з яснами, лікар може порадити приходити частіше.'],
@@ -234,13 +252,13 @@ const texts = [
   ['>Locations<', '>Адреси<'],
   ['>Privacy Policy<', '>Політика конфіденційності<'],
   ['>Terms of Use<', '>Умови використання<'],
-  ['>Cookie Policy<', '>Політика cookie<'],
+  ['>Cookie Policy<', '>Політика щодо файлів cookie<'],
   ['>Medical License<', '>Медична ліцензія<'],
   ['>Patient Rights<', '>Права пацієнтів<'],
   ['>Public Offer<', '>Публічна оферта<'],
   ['>Medical Disclaimer<', '>Медичне застереження<'],
   ['<li>Phone: <a', '<li>Телефон: <a'],
-  ['<li>Emergency line (7 days): <a', '<li>Гаряча лінія (7 днів): <a'],
+  ['<li>Emergency line (7 days): <a', '<li>Гаряча лінія (без вихідних): <a'],
   ['© 2026 Klykium Dental Clinics. All rights reserved.', '© 2026 Стоматологічні клініки Klykium. Усі права захищено.'],
 
   // short shared words last
@@ -256,6 +274,8 @@ if (missing.length) {
   console.error('Not found in index.html (update tools/build-ua.js):\n- ' + missing.join('\n- '));
   process.exit(1);
 }
+
+html = injectLd(html, 'uk');
 
 fs.mkdirSync(path.join(root, 'ua'), { recursive: true });
 fs.writeFileSync(path.join(root, 'ua', 'index.html'), html);
