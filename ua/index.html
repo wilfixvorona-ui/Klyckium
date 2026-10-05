@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="uk" data-base="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klykium — стоматологічна клініка</title>
+  <meta name="description" content="Стоматологічні клініки Klykium у Львові: огляди, ортодонтія, імплантація та інше. Усмішки, які не хочеться прикривати рукою.">
+  <link rel="alternate" hreflang="en" href="../">
+  <link rel="alternate" hreflang="uk" href="./">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plaster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>
+    // coming from the other language: start behind the curtain, main.js lifts it
+    try { if (sessionStorage.getItem('klyk-lang')) { document.documentElement.classList.add('is-entering'); sessionStorage.removeItem('klyk-lang'); } } catch (e) {}
+  </script>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="#" class="header__logo" aria-label="Klykium — на головну">
+        <span class="header__logo-text" aria-hidden="true">Klykium</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#" class="nav__link is-active">Головна</a></li>
+          <li><a href="#about" class="nav__link">Про нас</a></li>
+          <li><a href="#services" class="nav__link">Послуги</a></li>
+          <li><a href="#doctors" class="nav__link">Лікарі</a></li>
+          <li><a href="#reviews" class="nav__link">Відгуки</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#locations" class="icon-btn" aria-label="Наші клініки на мапі">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.5s-7-6.1-7-11.8a7 7 0 1 1 14 0c0 5.7-7 11.8-7 11.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.7" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+        </a>
+
+        <div class="lang-menu" id="lang-menu">
+          <button class="lang-menu__toggle icon-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lang-list" aria-label="Мова: українська">
+            <img src="../img/flag-ua.svg" alt="" width="30" height="20">
+            <svg class="lang-menu__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="lang-menu__list" id="lang-list">
+            <li><a class="lang-menu__item" href="../" hreflang="en" lang="en"><img src="../img/flag-en.svg" alt="" width="30" height="20"><span>English</span></a></li>
+            <li><a class="lang-menu__item" href="./" hreflang="uk" aria-current="page"><img src="../img/flag-ua.svg" alt="" width="30" height="20"><span>Українська</span></a></li>
+          </ul>
+        </div>
+
+        <a href="#contact" class="btn header__btn">
+          <span>Записатися на прийом</span>
+          <span class="btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero__grid">
+        <span class="hero__logo hero__logo--gap" aria-hidden="true">Klykium</span>
+
+        <div class="hero__card hero__card--light bg-white reveal">
+          <span class="hero__logo hero__logo--dark" aria-hidden="true">Klykium</span>
+          <h1 class="hero__title">
+            <span class="hero__title-line">Інші клініки всміхаються</span>
+            <span class="hero__title-line hero__title-line--strong">Ми <em>показуємо</em> зуби</span>
+          </h1>
+          <img class="hero__tooth" src="../img/tooth-hero.png" alt="" width="921" height="710">
+        </div>
+
+        <!-- mobile only: outlined wordmark between the cards -->
+        <span class="hero__logo-m" aria-hidden="true">Klykium</span>
+
+        <div class="hero__card hero__card--dark bg-black reveal" style="--delay: .15s">
+          <span class="hero__logo hero__logo--light" aria-hidden="true">Klykium</span>
+          <div class="hero__top">
+            <p class="hero__lead">Названа на честь ікла — для усмішок, які не хочеться прикривати рукою.</p>
+            <!-- placeholder: the video player flies from here (desktop) -->
+            <div class="hero__video" aria-hidden="true"></div>
+          </div>
+          <p class="hero__text">Ввічлива усмішка приховує більше, ніж показує. Ми лікуємо, вирівнюємо й відновлюємо зуби, доки сміятися вголос знову не стане природним — без фільтрів і без прикривання рукою.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="about" id="about">
+      <div class="about__grid">
+
+        <div class="about__content">
+          <p class="section-label reveal"><span>01</span><span class="section-label__sep">|</span><span>Про нас</span></p>
+          <h2 class="about__title reveal">Можемо довго розповідати, які ми хороші. Або просто подивіться на <em>цифри</em></h2>
+
+          <ul class="stats">
+            <li class="stat bg-white reveal">
+              <span class="stat__num" data-count="12" data-suffix="+">12+</span>
+              <span class="stat__label">років практичного <br>клінічного досвіду</span>
+            </li>
+            <li class="stat bg-white reveal" style="--delay: .1s">
+              <span class="stat__num" data-count="8400" data-suffix="+">8 400+</span>
+              <span class="stat__label">пацієнтів пролікували <br>з дня відкриття</span>
+            </li>
+            <li class="stat bg-white reveal" style="--delay: .2s">
+              <span class="stat__num" data-count="95" data-suffix="%">95%</span>
+              <span class="stat__label">процедур без болю — <br>за відгуками пацієнтів</span>
+            </li>
+            <li class="stat bg-white reveal" style="--delay: .3s">
+              <span class="stat__num" data-count="41">41</span>
+              <span class="stat__label">лікар під одним дахом — <br>без поїздок між клініками</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="about__media">
+          <div class="about__video">
+            <div class="vplayer is-paused" id="vplayer">
+              <video class="vplayer__video" src="../video/about-hero-video.mp4" poster="../img/about-video-poster.jpg" muted loop playsinline autoplay preload="auto"></video>
+              <span class="vplayer__frame" aria-hidden="true"></span>
+              <button class="vplayer__toggle" type="button" aria-label="Відтворити відео">
+                <svg class="icon-play" viewBox="0 0 24 24"><path d="M7 4.2v15.6a1 1 0 0 0 1.5.9l12.4-7.8a1 1 0 0 0 0-1.8L8.5 3.3A1 1 0 0 0 7 4.2z" fill="currentColor"/></svg>
+                <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="3.5" width="4.6" height="17" rx="1.2" fill="currentColor"/><rect x="14.4" y="3.5" width="4.6" height="17" rx="1.2" fill="currentColor"/></svg>
+              </button>
+              <div class="vplayer__bar">
+                <button class="vplayer__btn" type="button" aria-label="Відтворити відео">
+                  <svg class="icon-play" viewBox="0 0 24 24"><path d="M7 4.2v15.6a1 1 0 0 0 1.5.9l12.4-7.8a1 1 0 0 0 0-1.8L8.5 3.3A1 1 0 0 0 7 4.2z" fill="currentColor"/></svg>
+                  <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="3.5" width="4.6" height="17" rx="1.2" fill="currentColor"/><rect x="14.4" y="3.5" width="4.6" height="17" rx="1.2" fill="currentColor"/></svg>
+                </button>
+                <input class="vplayer__range" type="range" min="0" max="1000" value="0" aria-label="Прогрес відео">
+                <span class="vplayer__time">0:00 / 0:18</span>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="btn btn--lg about__yt reveal" target="_blank" rel="noopener">
+            <span>Дивитися відео на YouTube</span>
+            <span class="btn__icon btn__icon--lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="#f00" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8z"/><path fill="#fff" d="M9.8 15.1V8.9l5.4 3.1z"/></svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Services (pinned, cards scroll horizontally on desktop) ===== -->
+    <section class="services" id="services">
+      <div class="services__pin">
+        <div class="services__head">
+          <p class="section-label reveal"><span>02</span><span class="section-label__sep">|</span><span>Послуги</span></p>
+          <h2 class="services__title reveal">Цифри показують, скільки ми досягли. А ось що саме ми робимо</h2>
+        </div>
+
+        <div class="services__band">
+          <ul class="services__track">
+            <li class="service reveal">
+              <div class="service__media">
+                <img class="service__photo" src="../img/general-photo.png" alt="Інструменти для огляду та зубна щітка" width="513" height="266">
+                <span class="service__icon"><img src="../img/general-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <h3 class="service__title">Терапевтична стоматологія</h3>
+              <p class="service__text">Огляди, професійна чистка й раннє виявлення проблем</p>
+              <div class="service__tags"><span class="service__tag">Від $40</span><span class="service__tag">40–45 хв</span></div>
+            </li>
+
+            <li class="service reveal" style="--delay: .1s">
+              <div class="service__media">
+                <img class="service__photo" src="../img/Orthodontics-photo.png" alt="Модель щелепи з брекетами та прозорий елайнер" width="513" height="268">
+                <span class="service__icon"><img src="../img/Orthodontics-icon.png" alt="" width="93" height="93"></span>
+              </div>
+              <h3 class="service__title">Ортодонтія</h3>
+              <p class="service__text">Криві зуби, щілини чи неправильний прикус</p>
+              <div class="service__tags"><span class="service__tag">Від $1 200</span><span class="service__tag">6–18 місяців</span></div>
+            </li>
+
+            <li class="service reveal" style="--delay: .2s">
+              <div class="service__media">
+                <img class="service__photo" src="../img/dental-photo.png" alt="Модель зубного імпланта та усмішка" width="515" height="267">
+                <span class="service__icon"><img src="../img/dental-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <h3 class="service__title">Імплантація</h3>
+              <p class="service__text">Немає одного зуба або кількох</p>
+              <div class="service__tags"><span class="service__tag">Від $1 200</span><span class="service__tag">6–18 місяців</span></div>
+            </li>
+
+            <li class="service">
+              <div class="service__media">
+                <img class="service__photo" src="../img/Restorative-photo.png" alt="Модель реставрації зуба" width="515" height="267">
+                <span class="service__icon"><img src="../img/restorative-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <h3 class="service__title">Відновлювальна стоматологія</h3>
+              <p class="service__text">Сколоті, тріснуті чи зруйновані карієсом зуби</p>
+              <div class="service__tags"><span class="service__tag">Від $90</span><span class="service__tag">1 візит</span></div>
+            </li>
+
+            <li class="service">
+              <div class="service__media">
+                <img class="service__photo" src="../img/Endodontics-photo.png" alt="Модель кореневих каналів зуба" width="515" height="267">
+                <span class="service__icon"><img src="../img/Endodontics-icon.png" alt="" width="65" height="65"></span>
+              </div>
+              <h3 class="service__title">Ендодонтія</h3>
+              <p class="service__text">Зубний біль, глибокий карієс чи лікування каналів</p>
+              <div class="service__tags"><span class="service__tag">Від $180</span><span class="service__tag">90 хв</span></div>
+            </li>
+
+            <li class="service">
+              <div class="service__media">
+                <img class="service__photo" src="../img/Periodontal-photo.png" alt="Модель для лікування ясен" width="515" height="267">
+                <span class="service__icon"><img src="../img/Periodontal-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <h3 class="service__title">Пародонтологія</h3>
+              <p class="service__text">Ясна кровоточать, набрякають чи опускаються</p>
+              <div class="service__tags"><span class="service__tag">Від $70</span><span class="service__tag">60 хв</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Doctors (slides over the pinned services block on desktop) ===== -->
+    <section class="doctors bg-black-doctors" id="doctors">
+      <div class="doctors__head">
+        <div>
+          <p class="section-label section-label--light reveal"><span>03</span><span class="section-label__sep">|</span><span>Наші лікарі</span></p>
+          <h2 class="doctors__title reveal">Білий халат може вдягнути кожен. Заслужити його — ні.</h2>
+        </div>
+        <p class="doctors__text reveal">Кожен спеціаліст тут займається чимось одним і робить це тисячі разів. Ви точно знатимете, хто вас лікує, ще до того, як сядете в крісло.</p>
+      </div>
+
+      <ul class="doctors__grid">
+            <li class="doctor reveal" style="--delay: 0s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="../img/doctor-sofia-hnatiuk.png" alt="Софія Гнатюк" width="533" height="533" loading="lazy">
+                <span class="doctor__badge">Засновниця</span>
+                <a class="doctor__call" href="#contact" aria-label="Зателефонувати: Софія Гнатюк"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Софія Гнатюк</h3>
+                <span class="doctor__spec"><img src="../img/Orthodontics-icon.png" alt="" width="93" height="93"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Ортодонтка</li>
+                <li>Брекети й елайнери</li>
+                <li>9 років</li>
+                <li>1 400+ вирівняних усмішок</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0.12s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="../img/doctor-andriy-melnyk.png" alt="Андрій Мельник" width="533" height="533" loading="lazy">
+                <span class="doctor__badge">Керівник ендодонтії</span>
+                <a class="doctor__call" href="#contact" aria-label="Зателефонувати: Андрій Мельник"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Андрій Мельник</h3>
+                <span class="doctor__spec"><img src="../img/Endodontics-icon.png" alt="" width="65" height="65"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Ендодонтист</li>
+                <li>Лікування каналів</li>
+                <li>8 років</li>
+                <li>2 000+ процедур під мікроскопом</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0.24s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="../img/doctor-iryna-savchuk.png" alt="Ірина Савчук" width="533" height="533" loading="lazy">
+                <span class="doctor__badge">Клінічна директорка</span>
+                <a class="doctor__call" href="#contact" aria-label="Зателефонувати: Ірина Савчук"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Ірина Савчук</h3>
+                <span class="doctor__spec"><img src="../img/restorative-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Реставрація зубів</li>
+                <li>12 років</li>
+                <li>Коронки за один день</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="../img/doctor-zoya-koval.png" alt="Зоя Коваль" width="533" height="533" loading="lazy">
+                <a class="doctor__call" href="#contact" aria-label="Зателефонувати: Зоя Коваль"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Зоя Коваль</h3>
+                <span class="doctor__spec"><img src="../img/Orthodontics-icon.png" alt="" width="93" height="93"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Ортодонтка</li>
+                <li>Діти й підлітки</li>
+                <li>7 років</li>
+                <li>900+ вирівняних дитячих усмішок</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0.12s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="../img/doctor-maksym-tkachenko.png" alt="Максим Ткаченко" width="533" height="533" loading="lazy">
+                <a class="doctor__call" href="#contact" aria-label="Зателефонувати: Максим Ткаченко"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Максим Ткаченко</h3>
+                <span class="doctor__spec"><img src="../img/Periodontal-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Пародонтолог</li>
+                <li>10 років</li>
+                <li>Стажування з хірургії у Відні</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0.24s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="../img/doctor-taras-bondar.png" alt="Тарас Бондар" width="533" height="533" loading="lazy">
+                <a class="doctor__call" href="#contact" aria-label="Зателефонувати: Тарас Бондар"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Тарас Бондар</h3>
+                <span class="doctor__spec"><img src="../img/dental-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Імплантолог</li>
+                <li>9 років</li>
+                <li>3 200+ встановлених імплантів</li>
+              </ul>
+            </li>
+      </ul>
+    </section>
+
+    <!-- ===== Before / After ===== -->
+    <section class="compare" id="results">
+      <div class="compare__grid">
+        <div class="compare__card bg-white reveal">
+          <p class="section-label"><span>04</span><span class="section-label__sep">|</span><span>До / Після</span></p>
+          <h2 class="compare__title">Побачте різницю на власні очі</h2>
+          <p class="compare__text">Потягніть повзунок, щоб порівняти усмішку, з якою пацієнти прийшли, і ту, з якою пішли.</p>
+          <img class="compare__teeth" src="../img/teeths.png" alt="" width="912" height="213" loading="lazy">
+        </div>
+
+        <div class="ba reveal" style="--delay: .15s; --pos: 50%">
+          <img class="ba__img" src="../img/after.png" alt="Усмішка після лікування" width="918" height="700" loading="lazy">
+          <img class="ba__img ba__img--before" src="../img/before.png" alt="Усмішка до лікування" width="916" height="701" loading="lazy">
+          <span class="ba__tag ba__tag--before">До</span>
+          <span class="ba__tag ba__tag--after">Після</span>
+          <span class="ba__line" aria-hidden="true">
+            <span class="ba__handle">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+          <input class="ba__range" type="range" min="0" max="100" value="50" step="0.1" aria-label="Порівняти до і після">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Reviews ===== -->
+    <section class="reviews" id="reviews">
+      <div class="reviews__head">
+        <div>
+          <p class="section-label reveal"><span>05</span><span class="section-label__sep">|</span><span>Відгуки пацієнтів</span></p>
+          <h2 class="reviews__title reveal">Що кажуть пацієнти після візиту</h2>
+        </div>
+        <p class="reviews__text reveal">Від першого огляду до повного перетворення усмішки — ось як пацієнти відчули лікування в Klykium.</p>
+      </div>
+
+      <div class="reviews__bar reveal">
+        <label class="reviews__sort">
+          <span class="visually-hidden">Сортувати відгуки</span>
+          <select id="reviews-sort">
+            <option value="newest">Найновіші відгуки</option>
+            <option value="oldest">Найстаріші відгуки</option>
+            <option value="highest">Найвища оцінка</option>
+            <option value="lowest">Найнижча оцінка</option>
+          </select>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <button class="reviews__write" type="button">Залишити відгук</button>
+      </div>
+
+      <ul class="reviews__list" id="reviews-list" aria-live="polite"></ul>
+
+      <nav class="pager" aria-label="Сторінки відгуків">
+        <button class="pager__arrow" type="button" data-dir="-1" aria-label="Попередня сторінка">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ol class="pager__pages" id="reviews-pages"></ol>
+        <button class="pager__arrow" type="button" data-dir="1" aria-label="Наступна сторінка">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </nav>
+    </section>
+
+    <!-- ===== FAQ (left column sticks while questions scroll) ===== -->
+    <section class="faq" id="faq">
+      <div class="faq__intro">
+        <p class="section-label reveal"><span>06</span><span class="section-label__sep">|</span><span>Часті питання</span></p>
+        <h2 class="faq__title reveal">Відповіді на питання, які пацієнти ставлять найчастіше</h2>
+        <p class="faq__text reveal">Від болю й цін до того, що відбувається на першому візиті, — ось що зазвичай хочуть знати перед записом. Не знайшли свого питання? Надішліть його нам, і лікар відповість протягом дня.</p>
+      </div>
+
+      <div class="faq__list" id="faq-list">
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+              <span>Чи буде боляче?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div><p>Майже ніколи. Перед будь-якою процедурою ми якісно знеболюємо й постійно питаємо, як ви почуваєтесь. Більшість пацієнтів кажуть, що відчули лише укол анестезії.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+              <span>Скільки коштує візит?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div><p>Огляд із чисткою — від $40. Для складніших випадків ви отримуєте письмовий план лікування з повною ціною ще до початку, тож жодних сюрпризів у рахунку.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+              <span>Що буде на першому візиті?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div><p>Ми оглянемо зуби, за потреби зробимо знімок і пояснимо, що бачимо. Ви підете з чітким планом і самі вирішите, що робити далі, — без вашої згоди нічого не починаємо.</p></div>
+          </div>
+        </div>
+        <div class="faq-item is-open">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q4" aria-expanded="true" aria-controls="faq-a4">
+              <span>Чи можу я обрати лікаря?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <div><p>Так. Можна записатися напряму до будь-кого з розділу «Наші лікарі» або ми самі підберемо спеціаліста під вашу проблему.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
+              <span>Що робити, якщо раптово заболів зуб?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <div><p>Одразу телефонуйте нам. Для екстрених випадків ми тримаємо вільні години того ж дня, зокрема в суботу, і підкажемо, що робити, поки ви до нас доїдете.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
+              <span>Чи лікуєте ви дітей?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a6" role="region" aria-labelledby="faq-q6">
+            <div><p>Так, від трьох років. З дітьми й підлітками працює Зоя Коваль, а перший візит ми робимо коротким та ігровим, щоб не було страшно.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q7" aria-expanded="false" aria-controls="faq-a7">
+              <span>Чи є гарантія на лікування?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a7" role="region" aria-labelledby="faq-q7">
+            <div><p>На пломби, коронки й імпланти діє гарантія від 1 до 5 років залежно від лікування. Точні умови прописані у вашому плані.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">
+              <span>Чи можна оплатити частинами?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a8" role="region" aria-labelledby="faq-q8">
+            <div><p>Так. Лікування понад $500 можна розбити на щомісячні платежі без переплат. Скажіть адміністратору — це займе кілька хвилин.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q9" aria-expanded="false" aria-controls="faq-a9">
+              <span>Як часто треба приходити на огляд?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a9" role="region" aria-labelledby="faq-q9">
+            <div><p>Більшості людей достатньо раз на пів року. Якщо у вас брекети, імпланти чи проблеми з яснами, лікар може порадити приходити частіше.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Book a consultation (CTA) ===== -->
+    <section class="cta" id="contact">
+      <img class="cta__side cta__side--left reveal reveal--left" src="../img/white-cta.png" alt="" width="474" height="925" loading="lazy">
+      <img class="cta__side cta__side--right reveal reveal--right" src="../img/black-cta.png" alt="" width="444" height="925" loading="lazy">
+
+      <div class="cta__inner">
+        <p class="section-label reveal"><span>07</span><span class="section-label__sep">|</span><span>Запис на консультацію</span></p>
+        <h2 class="cta__title reveal">Готові <em>перестати</em> ховати усмішку?</h2>
+
+        <div class="cta__media reveal">
+          <img class="cta__photo" src="../img/ta-image.png" alt="Кабінет клініки Klykium" width="1123" height="723" loading="lazy">
+          <span class="cta__frame" aria-hidden="true"></span>
+          <button class="btn btn--lg cta__btn" type="button">
+            <span>Записатися на прийом</span>
+            <span class="btn__icon btn__icon--lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16.5" cy="16.5" r="3.2" fill="#fff" stroke="currentColor" stroke-width="1.4"/><path d="M16.5 15.2v1.4l.9.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </span>
+          </button>
+        </div>
+
+        <p class="cta__text reveal">Оберіть лікаря й зручний час, а про все інше ми подбаємо з першого ж візиту.</p>
+      </div>
+    </section>
+
+    <!-- ===== Locations ===== -->
+    <section class="locations" id="locations" aria-label="Наші клініки">
+      <ul class="locations__list">
+        <li>
+          <button class="location is-active reveal" type="button" data-pin="0" aria-pressed="true">
+            <span class="location__icon"><img src="../img/akar-icons_location.png" alt="" width="29" height="32"></span>
+            <span class="location__body">
+              <strong class="location__name">Klykium Левандівка</strong>
+              <span>вул. Липинського, 8, Львів</span>
+              <span>Пн–Пт 9:00–19:00 (концепт)</span>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="location reveal" type="button" data-pin="1" aria-pressed="false" style="--delay: .1s">
+            <span class="location__icon"><img src="../img/akar-icons_location.png" alt="" width="29" height="32"></span>
+            <span class="location__body">
+              <strong class="location__name">Klykium Центр</strong>
+              <span>вул. Дорошенка, 12, Львів</span>
+              <span>Пн–Сб 9:00–20:00 (концепт)</span>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="location reveal" type="button" data-pin="2" aria-pressed="false" style="--delay: .2s">
+            <span class="location__icon"><img src="../img/akar-icons_location.png" alt="" width="29" height="32"></span>
+            <span class="location__body">
+              <strong class="location__name">Klykium Сихів</strong>
+              <span>просп. Червоної Калини, 45, Львів</span>
+              <span>Пн–Сб 9:00–20:00 (концепт)</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="map reveal" style="--delay: .15s">
+        <img class="map__img" src="../img/location.png" alt="Мапа клінік Klykium" width="1139" height="653" loading="lazy">
+        <span class="map__pin is-active" style="left: 22%; top: 30%" aria-hidden="true"></span>
+        <span class="map__pin" style="left: 55%; top: 24%" aria-hidden="true"></span>
+        <span class="map__pin" style="left: 76%; top: 76%" aria-hidden="true"></span>
+        <button class="map__route" type="button">
+          <span class="map__route-icon"><img src="../img/akar-icons_search.png" alt="" width="29" height="32"></span>
+          <span>Знайдіть найшвидший маршрут до найближчої клініки.</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <a href="#" class="footer__logo" aria-label="Klykium — нагору">Klykium</a>
+
+      <div class="lang" role="group" aria-label="Мова">
+        <a class="lang__btn" href="../" hreflang="en" lang="en" aria-label="English"><img src="../img/flag-en.svg" alt="" width="60" height="40"></a>
+        <a class="lang__btn is-active" href="./" hreflang="uk" aria-current="page" aria-label="Українська"><img src="../img/flag-ua.svg" alt="" width="60" height="40"></a>
+      </div>
+
+      <ul class="socials">
+        <li><a class="socials__link" href="#" aria-label="Instagram"><img src="../img/ri_instagram-fill.png" alt="" width="55" height="55"></a></li>
+        <li><a class="socials__link" href="#" aria-label="Facebook"><img src="../img/ic_baseline-facebook.png" alt="" width="50" height="50"></a></li>
+        <li><a class="socials__link" href="#" aria-label="Telegram"><img src="../img/ic_sharp-telegram.png" alt="" width="50" height="50"></a></li>
+        <li><a class="socials__link" href="#" aria-label="LinkedIn"><img src="../img/mdi_linkedin.png" alt="" width="50" height="50"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer__cols">
+      <nav class="footer__col" aria-label="Клініка">
+        <h2 class="footer__heading">Клініка</h2>
+        <ul>
+          <li><a href="#">Головна</a></li>
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#services">Послуги</a></li>
+          <li><a href="#doctors">Лікарі</a></li>
+          <li><a href="#results">До / Після</a></li>
+          <li><a href="#reviews">Відгуки</a></li>
+          <li><a href="#faq">Часті питання</a></li>
+          <li><a href="#locations">Адреси</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Послуги">
+        <h2 class="footer__heading">Послуги</h2>
+        <ul>
+          <li><a href="#services">Терапевтична стоматологія</a></li>
+          <li><a href="#services">Ортодонтія</a></li>
+          <li><a href="#services">Імплантація</a></li>
+          <li><a href="#services">Відновлювальна стоматологія</a></li>
+          <li><a href="#services">Ендодонтія</a></li>
+          <li><a href="#services">Лікування ясен</a></li>
+          <li><a href="#services">Дитяча стоматологія</a></li>
+          <li><a href="#services">Невідкладна допомога</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Правова інформація">
+        <h2 class="footer__heading">Документи</h2>
+        <ul>
+          <li><a href="#">Політика конфіденційності</a></li>
+          <li><a href="#">Умови використання</a></li>
+          <li><a href="#">Політика cookie</a></li>
+          <li><a href="#">Медична ліцензія</a></li>
+          <li><a href="#">Права пацієнтів</a></li>
+          <li><a href="#">Публічна оферта</a></li>
+          <li><a href="#">Медичне застереження</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer__col--contacts">
+        <h2 class="footer__heading">Контакти</h2>
+        <ul>
+          <li>Телефон: <a href="tel:+380320000000">+380 32 000 00 00</a></li>
+          <li>Гаряча лінія (7 днів): <a href="tel:+380670000000">+380 67 000 00 00</a></li>
+          <li><a class="footer__mail" href="mailto:hello@klykium.com">hello@klykium.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer__copy">© 2026 Стоматологічні клініки Klykium. Усі права захищено.</p>
+
+    <div class="footer__mark reveal" aria-hidden="true"><span class="footer__word">Klykium</span></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klykium — Dental Clinic</title>
+  <meta name="description" content="Klykium dental clinics in Lviv: checkups, orthodontics, implants and more. Smiles you don't cover with your hand.">
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="uk" href="ua/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plaster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // coming from the other language: start behind the curtain, main.js lifts it
+    try { if (sessionStorage.getItem('klyk-lang')) { document.documentElement.classList.add('is-entering'); sessionStorage.removeItem('klyk-lang'); } } catch (e) {}
+  </script>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="#" class="header__logo" aria-label="Klykium home">
+        <span class="header__logo-text" aria-hidden="true">Klykium</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#" class="nav__link is-active">Home</a></li>
+          <li><a href="#about" class="nav__link">About us</a></li>
+          <li><a href="#services" class="nav__link">Services</a></li>
+          <li><a href="#doctors" class="nav__link">Our Doctors</a></li>
+          <li><a href="#reviews" class="nav__link">Reviews</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#locations" class="icon-btn" aria-label="Our clinics on the map">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.5s-7-6.1-7-11.8a7 7 0 1 1 14 0c0 5.7-7 11.8-7 11.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.7" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+        </a>
+
+        <div class="lang-menu" id="lang-menu">
+          <button class="lang-menu__toggle icon-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lang-list" aria-label="Language: English">
+            <img src="img/flag-en.svg" alt="" width="30" height="20">
+            <svg class="lang-menu__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="lang-menu__list" id="lang-list">
+            <li><a class="lang-menu__item" href="./" hreflang="en" aria-current="page"><img src="img/flag-en.svg" alt="" width="30" height="20"><span>English</span></a></li>
+            <li><a class="lang-menu__item" href="ua/" hreflang="uk" lang="uk"><img src="img/flag-ua.svg" alt="" width="30" height="20"><span>Українська</span></a></li>
+          </ul>
+        </div>
+
+        <a href="#contact" class="btn header__btn">
+          <span>Book a Consultation</span>
+          <span class="btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero__grid">
+        <span class="hero__logo hero__logo--gap" aria-hidden="true">Klykium</span>
+
+        <div class="hero__card hero__card--light bg-white reveal">
+          <span class="hero__logo hero__logo--dark" aria-hidden="true">Klykium</span>
+          <h1 class="hero__title">
+            <span class="hero__title-line">Other clinics smile</span>
+            <span class="hero__title-line hero__title-line--strong">We <em>show</em> teeth</span>
+          </h1>
+          <img class="hero__tooth" src="img/tooth-hero.png" alt="" width="921" height="710">
+        </div>
+
+        <!-- mobile only: outlined wordmark between the cards -->
+        <span class="hero__logo-m" aria-hidden="true">Klykium</span>
+
+        <div class="hero__card hero__card--dark bg-black reveal" style="--delay: .15s">
+          <span class="hero__logo hero__logo--light" aria-hidden="true">Klykium</span>
+          <div class="hero__top">
+            <p class="hero__lead">Named after the canine tooth, built for smiles you don't cover with your hand.</p>
+            <!-- placeholder: the video player flies from here (desktop) -->
+            <div class="hero__video" aria-hidden="true"></div>
+          </div>
+          <p class="hero__text">A polite smile hides more than it shows. We treat, align and restore your teeth until laughing out loud feels natural again — no filters, no covering up.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="about" id="about">
+      <div class="about__grid">
+
+        <div class="about__content">
+          <p class="section-label reveal"><span>01</span><span class="section-label__sep">|</span><span>About us</span></p>
+          <h2 class="about__title reveal">We could tell you we're good. Or you could just look at the <em>numbers</em></h2>
+
+          <ul class="stats">
+            <li class="stat bg-white reveal">
+              <span class="stat__num" data-count="12" data-suffix="+">12+</span>
+              <span class="stat__label">years of hands-on <br>clinical experience</span>
+            </li>
+            <li class="stat bg-white reveal" style="--delay: .1s">
+              <span class="stat__num" data-count="8400" data-suffix="+">8,400+</span>
+              <span class="stat__label">patients treated <br>since we opened</span>
+            </li>
+            <li class="stat bg-white reveal" style="--delay: .2s">
+              <span class="stat__num" data-count="95" data-suffix="%">95%</span>
+              <span class="stat__label">pain-free procedures, <br>per patient feedback</span>
+            </li>
+            <li class="stat bg-white reveal" style="--delay: .3s">
+              <span class="stat__num" data-count="41">41</span>
+              <span class="stat__label">doctors under one roof no <br>bouncing between clinics</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="about__media">
+          <div class="about__video">
+            <div class="vplayer is-paused" id="vplayer">
+              <video class="vplayer__video" src="video/about-hero-video.mp4" poster="img/about-video-poster.jpg" muted loop playsinline autoplay preload="auto"></video>
+              <span class="vplayer__frame" aria-hidden="true"></span>
+              <button class="vplayer__toggle" type="button" aria-label="Play video">
+                <svg class="icon-play" viewBox="0 0 24 24"><path d="M7 4.2v15.6a1 1 0 0 0 1.5.9l12.4-7.8a1 1 0 0 0 0-1.8L8.5 3.3A1 1 0 0 0 7 4.2z" fill="currentColor"/></svg>
+                <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="3.5" width="4.6" height="17" rx="1.2" fill="currentColor"/><rect x="14.4" y="3.5" width="4.6" height="17" rx="1.2" fill="currentColor"/></svg>
+              </button>
+              <div class="vplayer__bar">
+                <button class="vplayer__btn" type="button" aria-label="Play video">
+                  <svg class="icon-play" viewBox="0 0 24 24"><path d="M7 4.2v15.6a1 1 0 0 0 1.5.9l12.4-7.8a1 1 0 0 0 0-1.8L8.5 3.3A1 1 0 0 0 7 4.2z" fill="currentColor"/></svg>
+                  <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="3.5" width="4.6" height="17" rx="1.2" fill="currentColor"/><rect x="14.4" y="3.5" width="4.6" height="17" rx="1.2" fill="currentColor"/></svg>
+                </button>
+                <input class="vplayer__range" type="range" min="0" max="1000" value="0" aria-label="Video progress">
+                <span class="vplayer__time">0:00 / 0:18</span>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="btn btn--lg about__yt reveal" target="_blank" rel="noopener">
+            <span>Watch the video on YouTube</span>
+            <span class="btn__icon btn__icon--lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="#f00" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8z"/><path fill="#fff" d="M9.8 15.1V8.9l5.4 3.1z"/></svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Services (pinned, cards scroll horizontally on desktop) ===== -->
+    <section class="services" id="services">
+      <div class="services__pin">
+        <div class="services__head">
+          <p class="section-label reveal"><span>02</span><span class="section-label__sep">|</span><span>Services</span></p>
+          <h2 class="services__title reveal">The figures show how much we have accomplished. Here is exactly what we do</h2>
+        </div>
+
+        <div class="services__band">
+          <ul class="services__track">
+            <li class="service reveal">
+              <div class="service__media">
+                <img class="service__photo" src="img/general-photo.png" alt="Dental checkup tools and a toothbrush" width="513" height="266">
+                <span class="service__icon"><img src="img/general-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <h3 class="service__title">General Dentistry</h3>
+              <p class="service__text">Checkups, cleanings and early problem spotting</p>
+              <div class="service__tags"><span class="service__tag">From $40</span><span class="service__tag">40-45 mins</span></div>
+            </li>
+
+            <li class="service reveal" style="--delay: .1s">
+              <div class="service__media">
+                <img class="service__photo" src="img/Orthodontics-photo.png" alt="Dental model with braces and a clear aligner" width="513" height="268">
+                <span class="service__icon"><img src="img/Orthodontics-icon.png" alt="" width="93" height="93"></span>
+              </div>
+              <h3 class="service__title">Orthodontics</h3>
+              <p class="service__text">Crooked teeth, gaps or an uneven bite</p>
+              <div class="service__tags"><span class="service__tag">From $1,200</span><span class="service__tag">6–18 months</span></div>
+            </li>
+
+            <li class="service reveal" style="--delay: .2s">
+              <div class="service__media">
+                <img class="service__photo" src="img/dental-photo.png" alt="Dental implant model and a smile" width="515" height="267">
+                <span class="service__icon"><img src="img/dental-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <h3 class="service__title">Dental Implants</h3>
+              <p class="service__text">Missing one tooth or several</p>
+              <div class="service__tags"><span class="service__tag">From $1,200</span><span class="service__tag">6–18 months</span></div>
+            </li>
+
+            <li class="service">
+              <div class="service__media">
+                <img class="service__photo" src="img/Restorative-photo.png" alt="Tooth restoration model" width="515" height="267">
+                <span class="service__icon"><img src="img/restorative-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <h3 class="service__title">Restorative Dentistry</h3>
+              <p class="service__text">Chipped, cracked or decayed teeth</p>
+              <div class="service__tags"><span class="service__tag">From $90</span><span class="service__tag">1 visit</span></div>
+            </li>
+
+            <li class="service">
+              <div class="service__media">
+                <img class="service__photo" src="img/Endodontics-photo.png" alt="Tooth root canal model" width="515" height="267">
+                <span class="service__icon"><img src="img/Endodontics-icon.png" alt="" width="65" height="65"></span>
+              </div>
+              <h3 class="service__title">Endodontics</h3>
+              <p class="service__text">Tooth pain, deep decay or root canal treatment</p>
+              <div class="service__tags"><span class="service__tag">From $180</span><span class="service__tag">90 min</span></div>
+            </li>
+
+            <li class="service">
+              <div class="service__media">
+                <img class="service__photo" src="img/Periodontal-photo.png" alt="Gum treatment model" width="515" height="267">
+                <span class="service__icon"><img src="img/Periodontal-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <h3 class="service__title">Periodontics</h3>
+              <p class="service__text">Bleeding, swollen or receding gums</p>
+              <div class="service__tags"><span class="service__tag">From $70</span><span class="service__tag">60 min</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Doctors (slides over the pinned services block on desktop) ===== -->
+    <section class="doctors bg-black-doctors" id="doctors">
+      <div class="doctors__head">
+        <div>
+          <p class="section-label section-label--light reveal"><span>03</span><span class="section-label__sep">|</span><span>Our doctors</span></p>
+          <h2 class="doctors__title reveal">Anyone can wear a white coat. Not everyone earns it.</h2>
+        </div>
+        <p class="doctors__text reveal">Every specialist here focuses on one thing and does it thousands of times. You'll know exactly who's treating you before you ever sit in the chair.</p>
+      </div>
+
+      <ul class="doctors__grid">
+            <li class="doctor reveal" style="--delay: 0s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="img/doctor-sofia-hnatiuk.png" alt="Dr. Sofia Hnatiuk" width="533" height="533" loading="lazy">
+                <span class="doctor__badge">Founder</span>
+                <a class="doctor__call" href="#contact" aria-label="Call Dr. Sofia Hnatiuk"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Dr. Sofia Hnatiuk</h3>
+                <span class="doctor__spec"><img src="img/Orthodontics-icon.png" alt="" width="93" height="93"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Orthodontist</li>
+                <li>Braces &amp; aligners</li>
+                <li>9 years</li>
+                <li>1,400+ smiles aligned</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0.12s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="img/doctor-andriy-melnyk.png" alt="Dr. Andriy Melnyk" width="533" height="533" loading="lazy">
+                <span class="doctor__badge">Head of Endodontics</span>
+                <a class="doctor__call" href="#contact" aria-label="Call Dr. Andriy Melnyk"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Dr. Andriy Melnyk</h3>
+                <span class="doctor__spec"><img src="img/Endodontics-icon.png" alt="" width="65" height="65"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Endodontist</li>
+                <li>Root canal</li>
+                <li>8 years</li>
+                <li>2,000+ microscope treatments</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0.24s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="img/doctor-iryna-savchuk.png" alt="Dr. Iryna Savchuk" width="533" height="533" loading="lazy">
+                <span class="doctor__badge">Clinical Director</span>
+                <a class="doctor__call" href="#contact" aria-label="Call Dr. Iryna Savchuk"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Dr. Iryna Savchuk</h3>
+                <span class="doctor__spec"><img src="img/restorative-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Restorative Dentist</li>
+                <li>12 years</li>
+                <li>Same-day crowns specialist</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="img/doctor-zoya-koval.png" alt="Dr. Zoya Koval" width="533" height="533" loading="lazy">
+                <a class="doctor__call" href="#contact" aria-label="Call Dr. Zoya Koval"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Dr. Zoya Koval</h3>
+                <span class="doctor__spec"><img src="img/Orthodontics-icon.png" alt="" width="93" height="93"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Orthodontist</li>
+                <li>Kids &amp; teens</li>
+                <li>7 years</li>
+                <li>900+ young smiles straightened</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0.12s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="img/doctor-maksym-tkachenko.png" alt="Dr. Maksym Tkachenko" width="533" height="533" loading="lazy">
+                <a class="doctor__call" href="#contact" aria-label="Call Dr. Maksym Tkachenko"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Dr. Maksym Tkachenko</h3>
+                <span class="doctor__spec"><img src="img/Periodontal-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Periodontist</li>
+                <li>10 years</li>
+                <li>Trained in surgery in Vienna</li>
+              </ul>
+            </li>
+
+            <li class="doctor reveal" style="--delay: 0.24s">
+              <div class="doctor__media">
+                <img class="doctor__photo" src="img/doctor-taras-bondar.png" alt="Dr. Taras Bondar" width="533" height="533" loading="lazy">
+                <a class="doctor__call" href="#contact" aria-label="Call Dr. Taras Bondar"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+                <h3 class="doctor__name">Dr. Taras Bondar</h3>
+                <span class="doctor__spec"><img src="img/dental-icon.png" alt="" width="54" height="54"></span>
+              </div>
+              <ul class="doctor__facts">
+                <li>Implantologist</li>
+                <li>9 years</li>
+                <li>3,200+ implants placed</li>
+              </ul>
+            </li>
+      </ul>
+    </section>
+
+    <!-- ===== Before / After ===== -->
+    <section class="compare" id="results">
+      <div class="compare__grid">
+        <div class="compare__card bg-white reveal">
+          <p class="section-label"><span>04</span><span class="section-label__sep">|</span><span>Before/After</span></p>
+          <h2 class="compare__title">See the difference for yourself</h2>
+          <p class="compare__text">Drag the slider to compare the smile our patients came in with and the one they left with.</p>
+          <img class="compare__teeth" src="img/teeths.png" alt="" width="912" height="213" loading="lazy">
+        </div>
+
+        <div class="ba reveal" style="--delay: .15s; --pos: 50%">
+          <img class="ba__img" src="img/after.png" alt="Smile after treatment" width="918" height="700" loading="lazy">
+          <img class="ba__img ba__img--before" src="img/before.png" alt="Smile before treatment" width="916" height="701" loading="lazy">
+          <span class="ba__tag ba__tag--before">Before</span>
+          <span class="ba__tag ba__tag--after">After</span>
+          <span class="ba__line" aria-hidden="true">
+            <span class="ba__handle">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+          <input class="ba__range" type="range" min="0" max="100" value="50" step="0.1" aria-label="Compare before and after">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Reviews ===== -->
+    <section class="reviews" id="reviews">
+      <div class="reviews__head">
+        <div>
+          <p class="section-label reveal"><span>05</span><span class="section-label__sep">|</span><span>Patient reviews</span></p>
+          <h2 class="reviews__title reveal">What our patients say after they leave</h2>
+        </div>
+        <p class="reviews__text reveal">From first checkups to full smile makeovers, here's how treatment at Klykium actually felt.</p>
+      </div>
+
+      <div class="reviews__bar reveal">
+        <label class="reviews__sort">
+          <span class="visually-hidden">Sort reviews</span>
+          <select id="reviews-sort">
+            <option value="newest">Newest reviews</option>
+            <option value="oldest">Oldest reviews</option>
+            <option value="highest">Highest rated</option>
+            <option value="lowest">Lowest rated</option>
+          </select>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <button class="reviews__write" type="button">Write a review</button>
+      </div>
+
+      <ul class="reviews__list" id="reviews-list" aria-live="polite"></ul>
+
+      <nav class="pager" aria-label="Reviews pages">
+        <button class="pager__arrow" type="button" data-dir="-1" aria-label="Previous page">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ol class="pager__pages" id="reviews-pages"></ol>
+        <button class="pager__arrow" type="button" data-dir="1" aria-label="Next page">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </nav>
+    </section>
+
+    <!-- ===== FAQ (left column sticks while questions scroll) ===== -->
+    <section class="faq" id="faq">
+      <div class="faq__intro">
+        <p class="section-label reveal"><span>06</span><span class="section-label__sep">|</span><span>FAQ</span></p>
+        <h2 class="faq__title reveal">Answers to the questions patients ask us most</h2>
+        <p class="faq__text reveal">From pain and prices to what happens on your first visit, here's what people usually want to know before booking. Didn't find your question? Send it to us and a doctor will reply within a day.</p>
+      </div>
+
+      <div class="faq__list" id="faq-list">
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+              <span>Will the treatment hurt?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div><p>Almost never. We numb the area properly before any procedure and check in with you as we go. Most patients say the injection is the only thing they feel.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+              <span>How much does a visit cost?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div><p>A checkup with cleaning starts from $40. For anything more, you get a written treatment plan with the full price before we begin, so there are no surprises on the bill.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+              <span>What happens on my first visit?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div><p>We take a look, make X-rays if needed and talk through what we see. You leave with a clear plan and decide what to do next — nothing starts without your OK.</p></div>
+          </div>
+        </div>
+        <div class="faq-item is-open">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q4" aria-expanded="true" aria-controls="faq-a4">
+              <span>Can I choose my doctor?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <div><p>Yes. You can book directly with any specialist from the "Our doctors" section, or we'll match you with the right one based on your problem.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
+              <span>What should I do if I have sudden tooth pain?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <div><p>Call us right away. We keep same-day slots for emergencies, including Saturdays, and will tell you what to do until you get to the chair.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
+              <span>Do you treat children?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a6" role="region" aria-labelledby="faq-q6">
+            <div><p>Yes, from the age of three. Dr. Koval works with kids and teens, and we keep the first visit short and playful so it doesn't feel scary.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q7" aria-expanded="false" aria-controls="faq-a7">
+              <span>Is there a warranty on treatment?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a7" role="region" aria-labelledby="faq-q7">
+            <div><p>Fillings, crowns and implants come with a warranty from 1 to 5 years, depending on the treatment. The exact terms are written in your plan.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">
+              <span>Can I pay in installments?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a8" role="region" aria-labelledby="faq-q8">
+            <div><p>Yes. Treatments over $500 can be split into monthly payments with no extra fees. Ask the reception team and they'll set it up in a few minutes.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3>
+            <button class="faq-item__q" type="button" id="faq-q9" aria-expanded="false" aria-controls="faq-a9">
+              <span>How often should I come for a checkup?</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div class="faq-item__a" id="faq-a9" role="region" aria-labelledby="faq-q9">
+            <div><p>Every six months works for most people. If you have braces, implants or gum issues, your doctor may suggest coming a bit more often.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Book a consultation (CTA) ===== -->
+    <section class="cta" id="contact">
+      <img class="cta__side cta__side--left reveal reveal--left" src="img/white-cta.png" alt="" width="474" height="925" loading="lazy">
+      <img class="cta__side cta__side--right reveal reveal--right" src="img/black-cta.png" alt="" width="444" height="925" loading="lazy">
+
+      <div class="cta__inner">
+        <p class="section-label reveal"><span>07</span><span class="section-label__sep">|</span><span>Book a consultation</span></p>
+        <h2 class="cta__title reveal">Ready to <em>stop</em> covering your smile?</h2>
+
+        <div class="cta__media reveal">
+          <img class="cta__photo" src="img/ta-image.png" alt="Treatment room at Klykium" width="1123" height="723" loading="lazy">
+          <span class="cta__frame" aria-hidden="true"></span>
+          <button class="btn btn--lg cta__btn" type="button">
+            <span>Book a Consultation</span>
+            <span class="btn__icon btn__icon--lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16.5" cy="16.5" r="3.2" fill="#fff" stroke="currentColor" stroke-width="1.4"/><path d="M16.5 15.2v1.4l.9.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </span>
+          </button>
+        </div>
+
+        <p class="cta__text reveal">Choose a doctor, pick a time that suits you, and we'll take care of the rest from your very first visit.</p>
+      </div>
+    </section>
+
+    <!-- ===== Locations ===== -->
+    <section class="locations" id="locations" aria-label="Our clinics">
+      <ul class="locations__list">
+        <li>
+          <button class="location is-active reveal" type="button" data-pin="0" aria-pressed="true">
+            <span class="location__icon"><img src="img/akar-icons_location.png" alt="" width="29" height="32"></span>
+            <span class="location__body">
+              <strong class="location__name">Klykium Levandivka</strong>
+              <span>8 Lypynskoho St, Lviv</span>
+              <span>Mon–Fri 9:00–19:00 (concept)</span>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="location reveal" type="button" data-pin="1" aria-pressed="false" style="--delay: .1s">
+            <span class="location__icon"><img src="img/akar-icons_location.png" alt="" width="29" height="32"></span>
+            <span class="location__body">
+              <strong class="location__name">Klykium Center</strong>
+              <span>12 Doroshenka St, Lviv</span>
+              <span>Mon–Sat 9:00–20:00 (concept)</span>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="location reveal" type="button" data-pin="2" aria-pressed="false" style="--delay: .2s">
+            <span class="location__icon"><img src="img/akar-icons_location.png" alt="" width="29" height="32"></span>
+            <span class="location__body">
+              <strong class="location__name">Klykium Sykhiv</strong>
+              <span>45 Chervonoi Kalyny Ave, Lviv</span>
+              <span>Mon–Sat 9:00–20:00 (concept)</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="map reveal" style="--delay: .15s">
+        <img class="map__img" src="img/location.png" alt="Map of Klykium clinics" width="1139" height="653" loading="lazy">
+        <span class="map__pin is-active" style="left: 22%; top: 30%" aria-hidden="true"></span>
+        <span class="map__pin" style="left: 55%; top: 24%" aria-hidden="true"></span>
+        <span class="map__pin" style="left: 76%; top: 76%" aria-hidden="true"></span>
+        <button class="map__route" type="button">
+          <span class="map__route-icon"><img src="img/akar-icons_search.png" alt="" width="29" height="32"></span>
+          <span>Find the fastest route to a nearby clinic.</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <a href="#" class="footer__logo" aria-label="Klykium — back to top">Klykium</a>
+
+      <div class="lang" role="group" aria-label="Language">
+        <a class="lang__btn is-active" href="./" hreflang="en" aria-current="page" aria-label="English"><img src="img/flag-en.svg" alt="" width="60" height="40"></a>
+        <a class="lang__btn" href="ua/" hreflang="uk" lang="uk" aria-label="Українська"><img src="img/flag-ua.svg" alt="" width="60" height="40"></a>
+      </div>
+
+      <ul class="socials">
+        <li><a class="socials__link" href="#" aria-label="Instagram"><img src="img/ri_instagram-fill.png" alt="" width="55" height="55"></a></li>
+        <li><a class="socials__link" href="#" aria-label="Facebook"><img src="img/ic_baseline-facebook.png" alt="" width="50" height="50"></a></li>
+        <li><a class="socials__link" href="#" aria-label="Telegram"><img src="img/ic_sharp-telegram.png" alt="" width="50" height="50"></a></li>
+        <li><a class="socials__link" href="#" aria-label="LinkedIn"><img src="img/mdi_linkedin.png" alt="" width="50" height="50"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer__cols">
+      <nav class="footer__col" aria-label="Clinic">
+        <h2 class="footer__heading">Clinic</h2>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#doctors">Our Doctors</a></li>
+          <li><a href="#results">Before / After</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#locations">Locations</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Services">
+        <h2 class="footer__heading">Services</h2>
+        <ul>
+          <li><a href="#services">General Dentistry</a></li>
+          <li><a href="#services">Orthodontics</a></li>
+          <li><a href="#services">Dental Implants</a></li>
+          <li><a href="#services">Restorative Dentistry</a></li>
+          <li><a href="#services">Endodontics</a></li>
+          <li><a href="#services">Periodontal Care</a></li>
+          <li><a href="#services">Pediatric Dentistry</a></li>
+          <li><a href="#services">Emergency Care</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Legal">
+        <h2 class="footer__heading">Legal</h2>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Medical License</a></li>
+          <li><a href="#">Patient Rights</a></li>
+          <li><a href="#">Public Offer</a></li>
+          <li><a href="#">Medical Disclaimer</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer__col--contacts">
+        <h2 class="footer__heading">Contacts</h2>
+        <ul>
+          <li>Phone: <a href="tel:+380320000000">+380 32 000 00 00</a></li>
+          <li>Emergency line (7 days): <a href="tel:+380670000000">+380 67 000 00 00</a></li>
+          <li><a class="footer__mail" href="mailto:hello@klykium.com">hello@klykium.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer__copy">© 2026 Klykium Dental Clinics. All rights reserved.</p>
+
+    <div class="footer__mark reveal" aria-hidden="true"><span class="footer__word">Klykium</span></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
